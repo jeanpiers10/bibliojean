@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean Piers Cachique Guerra - Estudiante Hambriento de Conocimiento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .book-form, .book-list, .comments-section, .donation-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .book-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .book-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jean Piers Cachique Guerra</h1>
+        <p>Estudiante Hambriento de Conocimiento</p>
+    </header>
+    <div class="container">
+        <section class="book-form">
+            <h2>Agregar un Libro</h2>
+            <form id="bookForm">
+                <label for="bookTitle">Título del Libro:</label>
+                <input type="text" id="bookTitle" name="bookTitle" required><br><br>
+                <label for="bookAuthor">Autor del Libro:</label>
+                <input type="text" id="bookAuthor" name="bookAuthor" required><br><br>
+                <input type="submit" value="Agregar">
+            </form>
+        </section>
+        <section class="book-list">
+            <h2>Lista de Libros</h2>
+            <div id="books">
+                <!-- Los libros añadidos aparecerán aquí -->
+            </div>
+        </section>
+        <section class="comments-section">
+            <h2>Comentarios</h2>
+            <div id="comments">
+                <!-- Los comentarios aparecerán aquí -->
+            </div>
+            <form id="commentForm">
+                <label for="comment">Escribe tu comentario:</label><br>
+                <textarea id="comment" name="comment" required></textarea><br><br>
+                <input type="submit" value="Comentar">
+            </form>
+        </section>
+        <section class="donation-section">
+            <h2>Donaciones</h2>
+            <p>Si te gusta esta página y quieres apoyarla, considera hacer una donación. ¡Gracias por tu apoyo!</p>
+            <p>Puedes hacer una donación haciendo clic en el siguiente enlace:</p>
+            <a href="https://paypal.me/cachiqueguerra?country.x=PE&locale.x=es_XC" target="_blank">Donar con PayPal</a>
+        </section>
+    </div>
+    <footer>
+        <p>Conéctate conmigo en <a href="https://www.inventedsocialnetwork.com/jeanpiers">Invented Social Network</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('bookForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var title = document.getElementById('bookTitle').value;
+            var author = document.getElementById('bookAuthor').value;
+            var bookList = document.getElementById('books');
+            var bookItem = document.createElement('div');
+            bookItem.className = 'book-item';
+            bookItem.innerHTML = '<strong>' + title + '</strong> por ' + author;
+            bookList.appendChild(bookItem);
+            document.getElementById('bookForm').reset();
+        });
+
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var comment = document.getElementById('comment').value;
+            var commentsSection = document.getElementById('comments');
+            var commentItem = document.createElement('div');
+            commentItem.className = 'comment-item';
+            commentItem.innerText = comment;
+            commentsSection.appendChild(commentItem);
+            document.getElementById('commentForm').reset();
+        });
+    </script>
+</body>
+</html>
